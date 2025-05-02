@@ -3,7 +3,7 @@
 build:
 	docker compose build
 
-run:
+up:
 	docker compose up
 
 shell:
