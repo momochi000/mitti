@@ -1,0 +1,22 @@
+services:
+  app:
+    build:
+      context: .
+    volumes:
+      - ./:/app/
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    command: ./bin/dev -b 0.0.0.0
+    #  db:
+    #    image: docker.io/postgres:14
+    #    volumes:
+    #      - ./dbdata:/var/lib/postgresql/data/pgdata
+    #    environment:
+    #      - POSTGRES_USER=development
+    #      - POSTGRES_PASSWORD=development
+    #      - PGDATA=/var/lib/postgresql/data/pgdata
+    #
+    #
+    #

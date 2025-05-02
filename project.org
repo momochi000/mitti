@@ -1,0 +1,56 @@
+#+title: Project
+
+
+* Questions
+** [?] Get some clarity on the form of observations
+This is listed in the doc as structured, but it seems the structure is loosely defined.
+I want to check if these are some valid observations:
+
++ Are all values in strings? e.g. "True" vs True or no guarantees are made here?
++ Will the software expect bad data?
+  NaN values, blank values, gibberish, corrupted, or invalid values (e.g. "2 ms" for a window size)
++ Will we expect all measurements in the same units?
+  Always feet? or inches or meters?
+  Always numbers? or strings (e.g 12 vs "12" vs "twelve feet")
+  Always whole numbers
++ some example made up observations
+  If you could indicate whether these are valid or realistic? (or don't worry about it)
+  - "Attic vent ember rated": "True|False"
+  - "Attic vent screen nember rated": "True|False"
+  - "Chimney": "Can withstand embers"
+  - {"Roof Type": "Class A",
+    "Roof maintenance": "poor"}
+    or
+    {"Roof Type": "Class A",
+    "Roof age": "12 years"}
+    or
+    {"Roof Type": "Class A",
+    "Time since roof assembly": "12 years"}
+    or any combination of these
+  - {"Roof Gaps": "None"}
+    and
+    {"Roof Gaps": "None"}
+    or
+    {"Roof": "No gaps"}
+    and
+    {"Roof": "Some gaps detected"}
+    and
+    {"Roof": "No gaps, tiles are aging"}
+** [?] Some questions about rules
++ The example rule for windows shows
+  - Multiply safe Distance by 3 for single pane windows
+  - Multiply safe Distance by 2 for single pane windows
+
+  What do these 2 bullets refer to?
++ Are the "Example Mitigations" in the table part of the rule?
+  i.e. are they entered by the "Applied Science User" and stored in the system?
+  or are they example outputs to expect from running the rule against an observation set?
+** [?] Are there any performance or load requirements?
+Is there a scale in mind for the number of concurrent users, number of
+concurrent operations, or latency for the system to handle? or for POC purposes
+we can punt on scale and performance?
+* Design considerations
+just keeping my notes here roughly
++ Rules engine should be append-only
+  or changes should be tracked somehow. I could use paper trail or other mechanism
+* Tasks
