@@ -54,3 +54,7 @@ just keeping my notes here roughly
 + Rules engine should be append-only
   or changes should be tracked somehow. I could use paper trail or other mechanism
 * Tasks
+** TODO underwriter user can sign in
+** TODO applied science user can sign in
+** TODO rule database can be CRUD by applied science user
+** TODO rule database can track changes
