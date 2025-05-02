@@ -54,7 +54,11 @@ just keeping my notes here roughly
 + Rules engine should be append-only
   or changes should be tracked somehow. I could use paper trail or other mechanism
 * Tasks
-** TODO underwriter user can sign in
-** TODO applied science user can sign in
+** DONE underwriter user can sign in
+CLOSED: [2025-05-02 Fri 15:23]
+** DONE applied science user can sign in
+CLOSED: [2025-05-02 Fri 15:23]
+** TODO setup logger
+** TODO underwriter user cannot view admin dashboard or applied scientist dashboard
 ** TODO rule database can be CRUD by applied science user
 ** TODO rule database can track changes
