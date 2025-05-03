@@ -11,7 +11,7 @@ class ContentValidator < ActiveModel::Validator
 end
 
 class Observation < ApplicationRecord
-  belongs_to :property
+  belongs_to :property, required: false
 
   validates_with ContentValidator
 end

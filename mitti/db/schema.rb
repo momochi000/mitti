@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_03_164826) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_03_224438) do
   create_table "observations", force: :cascade do |t|
     t.json "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "observed_at"
-    t.integer "property_id", null: false
+    t.integer "property_id"
     t.index ["property_id"], name: "index_observations_on_property_id"
   end
 
