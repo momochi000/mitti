@@ -51,15 +51,37 @@ concurrent operations, or latency for the system to handle? or for POC purposes
 we can punt on scale and performance?
 * Design considerations
 just keeping my notes here roughly
-+ Rules engine should be append-only
-  or changes should be tracked somehow. I could use paper trail or other mechanism
+** Rules engine should be append-only
+or changes should be tracked somehow. I could use paper trail or other mechanism
+** Should a rule be a single table or multiple tables joined
+i.e.
+A:
+~rails g scaffold rule name:string written_rule:text functional_rule:text example_mitigation:text~
+
+vs
+B:
+rule has_many :functional_rules
+rule has_many :full_mitigations
+rule has_many :bridge_mitigations
+
+Thoughts:
++ rules seem loosely defined.
+  it will be difficult to split them into multiple objects. The nesting seems arbitrary
++ from what i'm reading in the examples, the rule can be placed into the prompt as context in it's entirety.
+  Doesn't seem much value in even making them separate columns, let alone what value would there be in separating them into separate tables/models
 * Tasks
 ** DONE underwriter user can sign in
 CLOSED: [2025-05-02 Fri 15:23]
 ** DONE applied science user can sign in
 CLOSED: [2025-05-02 Fri 15:23]
-** TODO underwriter user cannot view admin dashboard or applied scientist dashboard
-** TODO add login form/controls to the homepage
+** DONE underwriter user cannot view admin dashboard or applied scientist dashboard
+CLOSED: [2025-05-02 Fri 23:12]
+** DONE create core models and relationships
+CLOSED: [2025-05-03 Sat 10:09]
++ Property
++ Rule
++ Observation
 ** TODO rule database can be CRUD by applied science user
 ** TODO rule database can track changes
+** TODO add login form/controls to the homepage
 ** TODO setup logger
