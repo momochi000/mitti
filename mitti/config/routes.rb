@@ -14,9 +14,15 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
+
   root "home#index"
 
   get 'admin/dashboard' => 'admin#dashboard', as: :admin_dashboard
   get 'applied_scientist/dashboard' => 'applied_scientist#dashboard', as: :applied_science_dashboard
   get 'underwriter/dashboard' => 'underwriter#dashboard', as: :underwriter_dashboard
+
+  resources :properties
+  resources :rules
+  #resources :vulnerabilities
+  #resources :observations
 end

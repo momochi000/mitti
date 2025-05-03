@@ -5,6 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :rules, inverse_of: :creator
+
   # Along with self.store_full_sti_class = false, this is necessary so that
   # user rows in the database don't need to have type='Users::AdminUser' etc.
   # This could have been avoided by simply adding subclasses of User to

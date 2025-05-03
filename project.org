@@ -81,7 +81,24 @@ CLOSED: [2025-05-03 Sat 10:09]
 + Property
 + Rule
 + Observation
+** DONE property crud
+CLOSED: [2025-05-03 Sat 11:36]
+** DONE rule database CRUD
+CLOSED: [2025-05-03 Sat 11:36]
+** TODO admin dashboard has links to other crud
+** TODO underwriter dashboard has links to other crud
+** TODO AS user has links to other crud
+** TODO crud pages link back to dashboard
+** TODO observation CRUD
+** TODO examine paper trail for rules history tracking
+if this will be easy enough to use and serve the purpose just install the gem
+otherwise we need an append only data model/structure to track changes
 ** TODO rule database can be CRUD by applied science user
 ** TODO rule database can track changes
 ** TODO add login form/controls to the homepage
 ** TODO setup logger
+** TODO redirect to target page after login
+if you goto some page that requires login
+e.g. /properties
+then after you log in it should take you straight there.
+needs a login trampoline
