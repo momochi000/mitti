@@ -11,9 +11,18 @@ class User < ApplicationRecord
   # /models rather than nesting them under /models/users/ However, this will
   # eventually lead to a very crowded and difficult to understand /models
   # folder.
-  def self.find_sti_class(type_name)
+  def self.find_sti_class(type_name, *args)
     type_name = "Users::#{type_name}" unless type_name.include?("::") || type_name == 'User'
-    super(type_name)
+    super(type_name, *args)
+  end
+
+  def admin?
+    false
+  end
+  def applied_scientist?
+    false
+  end
+  def underwriter?
+    false
   end
 end
-

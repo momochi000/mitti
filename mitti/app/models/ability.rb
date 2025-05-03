@@ -6,6 +6,10 @@ class Ability
   def initialize(user)
     return unless user.present?
 
+    can :manage, 'Admin' if user.admin?
+    can :manage, 'AppliedScientist' if user.applied_scientist? || user.admin?
+    can :manage, 'Underwriter' if user.underwriter? || user.applied_scientist? || user.admin?
+
     #can :create, Observation, user: user
     # Define abilities for the user here. For example:
     #
