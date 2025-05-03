@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
       underwriter_dashboard_path
     else
       logger.warn "User logging in without a valid type: #{resource}"
-      super
+      root_path
     end
   end
 end

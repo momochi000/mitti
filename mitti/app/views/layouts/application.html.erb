@@ -29,5 +29,12 @@
       <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
     <% end %>
     <%= yield %>
+    <% if user_signed_in? && !current_page?(home_path) %>
+      <div>
+        <br />
+        <br />
+        <%= home_link %>
+      </div>
+    <% end %>
   </body>
 </html>
