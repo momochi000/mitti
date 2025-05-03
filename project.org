@@ -85,11 +85,14 @@ CLOSED: [2025-05-03 Sat 10:09]
 CLOSED: [2025-05-03 Sat 11:36]
 ** DONE rule database CRUD
 CLOSED: [2025-05-03 Sat 11:36]
+** DONE observation CRUD
+CLOSED: [2025-05-03 Sat 15:07]
+how to handle json input?
 ** TODO admin dashboard has links to other crud
+** TODO print/format observation content (json) nicely
 ** TODO underwriter dashboard has links to other crud
-** TODO AS user has links to other crud
+** TODO applied_scientist user has links to other crud
 ** TODO crud pages link back to dashboard
-** TODO observation CRUD
 ** TODO examine paper trail for rules history tracking
 if this will be easy enough to use and serve the purpose just install the gem
 otherwise we need an append only data model/structure to track changes
@@ -102,3 +105,5 @@ if you goto some page that requires login
 e.g. /properties
 then after you log in it should take you straight there.
 needs a login trampoline
+** TODO allow rich text input for rules input
+According the example it should allow bold and bullets etc

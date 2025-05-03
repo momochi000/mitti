@@ -1,0 +1,11 @@
+<% content_for :title, "New observation" %>
+
+<h1>New observation</h1>
+
+<%= render "form", observation: @observation %>
+
+<br>
+
+<div>
+  <%= link_to "Back to observations", observations_path %>
+</div>

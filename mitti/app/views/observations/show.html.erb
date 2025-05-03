@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @observation %>
+
+<div>
+  <%= link_to "Edit this observation", edit_observation_path(@observation) %> |
+  <%= link_to "Back to observations", observations_path %>
+
+  <%= button_to "Destroy this observation", @observation, method: :delete %>
+</div>

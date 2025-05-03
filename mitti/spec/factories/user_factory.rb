@@ -5,5 +5,7 @@ FactoryBot.define do
     password_confirmation { password }
 
     factory :admin, class: 'Users::Admin'
+    factory :applied_scientist, class: 'Users::AppliedScientist'
+    factory :underwriter, class: 'Users::Underwriter'
   end
 end

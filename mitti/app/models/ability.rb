@@ -11,7 +11,8 @@ class Ability
     can :manage, 'AppliedScientist' if user.admin? || user.applied_scientist?
     can :manage, 'Underwriter' if user.admin? || user.applied_scientist? || user.underwriter?
 
-    can :manage, Property if user.admin? || user.underwriter? || user.applied_scientist?
+    can :manage, Observation if user.admin? || user.applied_scientist? || user.underwriter?
+    can :manage, Property if user.admin? || user.applied_scientist? || user.underwriter?
     can :manage, Rule if user.admin? || user.applied_scientist?
 
     #can :create, Observation, user: user
