@@ -102,10 +102,17 @@ CLOSED: [2025-05-03 Sat 15:58]
 CLOSED: [2025-05-03 Sat 20:19]
 ** DONE print/format observation content (json) nicely
 CLOSED: [2025-05-03 Sat 20:21]
+** DONE run rules asynchronously against observation
+CLOSED: [2025-05-03 Sat 20:35]
+so that we can run multiple calls to llm simultaneously
 ** TODO examine paper trail for rules history tracking
 if this will be easy enough to use and serve the purpose just install the gem
 otherwise we need an append only data model/structure to track changes
 ** TODO rule database can track changes
+** TODO create page or control to run rule against observation
+** TODO create page or control to test rule against observation
+** -- MILESTONE--
+everything below here i consider bonus
 ** TODO add login form/controls to the homepage
 ** TODO setup logger
 ** TODO redirect to target page after login

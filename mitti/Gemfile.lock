@@ -441,6 +441,7 @@ DEPENDENCIES
   jbuilder
   kamal
   langchainrb (~> 0.19.5)
+  parallel (~> 1.27)
   propshaft
   pry (~> 0.15.2)
   puma (>= 5.0)
