@@ -43,6 +43,7 @@ gem "thruster", require: false
 gem "cancancan", "~> 3.6"
 gem "devise", "~> 4.9"
 gem "langchainrb", "~> 0.19.5"
+gem "paper_trail", "~> 16.0"
 gem "parallel", "~> 1.27"
 gem "ruby-openai", "~> 8.1"
 

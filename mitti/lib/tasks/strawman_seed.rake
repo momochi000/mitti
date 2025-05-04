@@ -3,8 +3,8 @@ namespace :seed do
   task strawman: :environment do
     # create basic user types
     admin = FactoryBot.create(:admin, email: 'admin@user.com', password: '123456')
-    underwriter = FactoryBot.create(:admin, email: 'underwriter@user.com', password: '123456')
-    applied_scientist = FactoryBot.create(:admin, email: 'appliedscientist@user.com', password: '123456')
+    underwriter = FactoryBot.create(:underwriter, email: 'underwriter@user.com', password: '123456')
+    applied_scientist = FactoryBot.create(:applied_scientist, email: 'appliedscientist@user.com', password: '123456')
 
     FactoryBot.create(:rule,
       name: 'Attic Vent',

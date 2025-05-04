@@ -1,6 +1,7 @@
 class RulesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_rule, only: %i[ show edit update destroy ]
+  before_action :set_paper_trail_whodunnit
   load_and_authorize_resource
 
   # GET /rules or /rules.json

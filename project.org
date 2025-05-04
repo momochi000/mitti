@@ -105,15 +105,23 @@ CLOSED: [2025-05-03 Sat 20:21]
 ** DONE run rules asynchronously against observation
 CLOSED: [2025-05-03 Sat 20:35]
 so that we can run multiple calls to llm simultaneously
-** TODO examine paper trail for rules history tracking
+** DONE examine paper trail for rules history tracking
+CLOSED: [2025-05-03 Sat 20:58]
 if this will be easy enough to use and serve the purpose just install the gem
 otherwise we need an append only data model/structure to track changes
-** TODO rule database can track changes
+** DONE rule database can track changes
+CLOSED: [2025-05-03 Sat 20:58]
 ** TODO create page or control to run rule against observation
 ** TODO create page or control to test rule against observation
+** TODO create page to run all rules against observation/property
+** TODO output rule results in pretty readable format
+** TODO expose old/previous rule versions
+** TODO update readme with all necessary content
+** TODO create some more example observations and add to seeds
+** TODO create some more example rules and add to seeds
+** TODO add login form/controls to the homepage
 ** -- MILESTONE--
 everything below here i consider bonus
-** TODO add login form/controls to the homepage
 ** TODO setup logger
 ** TODO redirect to target page after login
 if you goto some page that requires login
