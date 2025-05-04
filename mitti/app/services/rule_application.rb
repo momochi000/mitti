@@ -67,7 +67,7 @@ module RuleApplication
 
   def detect_vulnerability_instruction(rule, observation)
     <<-PROMPT
-    I've examined the property at #{observation.property.address}. Here is what I've noted:
+    I've examined #{observation.property.present? ? ("the property at" + observation.property.address) : 'a property'}. Here is what I've noted:
     <PropertyObservations>
     #{observation.content}
     </PropertyObservations>
@@ -87,7 +87,7 @@ module RuleApplication
 
   def determine_mitigations_instruction(rule, observation)
     <<-PROMPT
-    I've examined the property at #{observation.property.address}. Here is what I've noted:
+    I've examined the property at #{observation.property.present? ? ("the property at" + observation.property.address) : 'a property'}. Here is what I've noted:
     <PropertyObservations>
     #{observation.content}
     </PropertyObservations>

@@ -1,6 +1,6 @@
 class RulesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_rule, only: %i[ show edit update destroy ]
+  before_action :set_rule, only: %i[ show edit update destroy test]
   before_action :set_paper_trail_whodunnit
   load_and_authorize_resource
 
@@ -60,10 +60,23 @@ class RulesController < ApplicationController
     end
   end
 
+  # GET or PUT or PATCH
+  def test
+    @rule = Rule.new(rule_params)
+    @observation = Observation.new(
+      content: JSON.parse(params[:rule][:example_observation])
+    )
+    @results = RuleApplication.apply_rule(@rule, @observation)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_rule
-      @rule = Rule.find(params.expect(:id))
+      if params[:id]
+        @rule = Rule.find(params.expect(:id))
+      elsif params[:rule_id]
+        @rule = Rule.find(params.expect(:rule_id))
+      end
     end
 
     # Only allow a list of trusted parameters through.

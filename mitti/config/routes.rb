@@ -25,5 +25,9 @@ Rails.application.routes.draw do
     post :run
   end
   resources :properties
-  resources :rules
+  resources :rules do
+    get :test
+    post :test
+    patch :test
+  end
 end
