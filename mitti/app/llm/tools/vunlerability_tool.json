@@ -1,0 +1,19 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "vulnerability_detection-detect_vulnerability",
+      "description": "Determine if a property is vulnerable according to a provided vulnerability rule. Given some observations about the property, we want to determine if the property is vulnerable accrding to the given rule",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "is_vulnerable": {
+            "type": "boolean",
+            "description": "True if based on the observations provided by the property, the property is vulnerable to the conditions presented by the rule."
+          }
+        },
+        "required": ["is_vulnerable"]
+      }
+    }
+  }
+]

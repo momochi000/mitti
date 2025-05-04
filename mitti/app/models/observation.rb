@@ -14,4 +14,8 @@ class Observation < ApplicationRecord
   belongs_to :property, required: false
 
   validates_with ContentValidator
+
+  def pretty_content
+    JSON.parse(content)
+  end
 end
