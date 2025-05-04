@@ -111,10 +111,12 @@ if this will be easy enough to use and serve the purpose just install the gem
 otherwise we need an append only data model/structure to track changes
 ** DONE rule database can track changes
 CLOSED: [2025-05-03 Sat 20:58]
+** DONE create page to run all rules against observation/property
+CLOSED: [2025-05-04 Sun 00:02]
+** DONE output rule results in pretty readable format
+CLOSED: [2025-05-04 Sun 00:03]
 ** TODO create page or control to run rule against observation
 ** TODO create page or control to test rule against observation
-** TODO create page to run all rules against observation/property
-** TODO output rule results in pretty readable format
 ** TODO expose old/previous rule versions
 ** TODO update readme with all necessary content
 ** TODO create some more example observations and add to seeds
@@ -123,6 +125,12 @@ CLOSED: [2025-05-03 Sat 20:58]
 ** -- MILESTONE--
 everything below here i consider bonus
 ** TODO setup logger
+** TODO make existing tests pass
+** TODO write tests
+*** TODO services/rule_application
+** TODO create vulnerability model
+** TODO create mitigation model
+** TODO create vulnerabilities and mitigations when property/observation is evaluated
 ** TODO redirect to target page after login
 if you goto some page that requires login
 e.g. /properties
@@ -130,4 +138,5 @@ then after you log in it should take you straight there.
 needs a login trampoline
 ** TODO allow rich text input for rules input
 According the example it should allow bold and bullets etc
+** TODO Improve UI for checking vulnerabilities
 ** TODO Add/create evals

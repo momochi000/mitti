@@ -2,6 +2,25 @@ module RuleApplication
   extend self
 
   def apply_rule(rule, observation)
+    is_vulnerable = RuleApplication.detect_vulnerability(rule, observation)
+    if is_vulnerable
+      mitigations = RuleApplication.determine_mitigations(rule, observation)
+      {rule: rule, mitigations: mitigations}
+    else
+      {rule: rule, is_vulnerable: is_vulnerable}
+    end
+  end
+  
+  def apply_all_rules(observation)
+    Parallel.map(Rule.all, in_threads: 8) do |curr_rule|
+      is_vulnerable = RuleApplication.detect_vulnerability(curr_rule, observation)
+      if is_vulnerable
+        mitigations = RuleApplication.determine_mitigations(curr_rule, observation)
+        {rule: curr_rule, mitigations: mitigations, is_vulnerable: is_vulnerable}
+      else
+        {rule: curr_rule, is_vulnerable: is_vulnerable}
+      end
+    end
   end
 
   def detect_vulnerability(rule, observation)

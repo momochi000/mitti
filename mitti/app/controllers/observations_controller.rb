@@ -62,6 +62,12 @@ class ObservationsController < ApplicationController
     end
   end
 
+  def run
+    @observation = Observation.find(params.expect(:observation_id))
+    @observation_results = RuleApplication.apply_all_rules(@observation)
+    render :show
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_observation

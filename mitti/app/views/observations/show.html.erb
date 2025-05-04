@@ -6,5 +6,29 @@
   <%= link_to "Edit this observation", edit_observation_path(@observation) %> |
   <%= link_to "Back to observations", observations_path %>
 
+  <%= turbo_frame_tag 'observation_results' do %>
+    <%= button_to "Evaluate this observation against all rules", observation_run_path(@observation), method: :post %>
+    <%- if @observation_results.present? %>
+      <div>
+      <%- pretty_observation_results(@observation_results).each do |r| %>
+        <ul>
+          <li>
+            <%= r[:rule] %>
+            <% if r[:is_vulnerable] %>
+              <div>
+                Bridge Mitigations: <%= r[:mitigations][:bridge_mitigations] %>
+              </div>
+              <div>
+                Full Mitigations: <%= r[:mitigations][:full_mitigations] %>
+              </div>
+            <% else %>
+              <span> No vulnerability found </span>
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
+      </div>
+    <% end %>
+  <% end %>
   <%= button_to "Destroy this observation", @observation, method: :delete %>
 </div>

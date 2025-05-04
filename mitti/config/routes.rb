@@ -21,8 +21,9 @@ Rails.application.routes.draw do
   get 'applied_scientist/dashboard' => 'applied_scientist#dashboard', as: :applied_science_dashboard
   get 'underwriter/dashboard' => 'underwriter#dashboard', as: :underwriter_dashboard
 
-  resources :observations
+  resources :observations do
+    post :run
+  end
   resources :properties
   resources :rules
-  #resources :vulnerabilities
 end
