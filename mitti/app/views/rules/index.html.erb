@@ -13,4 +13,6 @@
   <% end %>
 </div>
 
-<%= link_to "New rule", new_rule_path %>
+<% if can? :create, Rule %>
+  <%= link_to "New rule", new_rule_path %>
+<% end %>

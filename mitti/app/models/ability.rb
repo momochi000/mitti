@@ -12,8 +12,10 @@ class Ability
     can :manage, 'Underwriter' if user.admin? || user.applied_scientist? || user.underwriter?
 
     can :manage, Observation if user.admin? || user.applied_scientist? || user.underwriter?
-    can :manage, Property if user.admin? || user.applied_scientist? || user.underwriter?
+    can :manage, Property if user.admin? || user.underwriter?
     can :manage, Rule if user.admin? || user.applied_scientist?
+
+    can :read, Rule if user.underwriter?
 
     #can :create, Observation, user: user
     # Define abilities for the user here. For example:
