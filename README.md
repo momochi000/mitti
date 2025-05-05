@@ -1,3 +1,6 @@
+# Intro
+Welcome to Mitti! A property risk evaluator and mitigation finder.
+
 # Overview of selected stack
 Provide a brief explanation of your chosen technology stack. While you don’t need to go into extensive detail, be prepared to justify your decisions.
 
