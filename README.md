@@ -42,6 +42,11 @@ Standard rails logger to STDOUT
   - `make build`
   - `make up`
 
+In order to make calls to openai, you will need to provide an openai api
+key. It will be read from an environment variable.  For convenience,
+create a `.env` file in the project root and add your
+`OPENAI_API_KEY='...'` to it.
+
 # Architecture Overview
 The code is structured following Rails standards.
 Models, views, controllers, and routes all reside in their default locations.
