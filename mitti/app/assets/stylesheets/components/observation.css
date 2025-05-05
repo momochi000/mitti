@@ -1,0 +1,8 @@
+.observation_content_wrap {
+}
+.observation_content_wrap span {
+  font-weight: bold;
+}
+.observation_content_wrap span::after {
+  content: ': ';
+}
