@@ -117,14 +117,22 @@ CLOSED: [2025-05-04 Sun 00:02]
 CLOSED: [2025-05-04 Sun 00:03]
 ** DONE create page or control to test rule against observation
 CLOSED: [2025-05-04 Sun 12:10]
-** TODO rules created before observation can be run against it
+** DONE rules created before observation can be run against it
+CLOSED: [2025-05-04 Sun 20:13]
 Separate control that uses the rule's observed_at date to look back into history
 and grab the versions of rules which correspond to that time
 
 this should be the default button for underwriters, but they can have a separate
 button that just runs against the most current rules. That's the existing
 functionality.
-** TODO update readme with all necessary content
+** DONE add control for underwriter to see the rules
+CLOSED: [2025-05-04 Sun 20:18]
+** DONE link to rule from the rule results
+CLOSED: [2025-05-04 Sun 20:51]
+** DONE update readme with all necessary content
+CLOSED: [2025-05-04 Sun 22:35]
+** TODO list and link to observations from the property page.
+** TODO upload the code to github
 ** TODO create a partial to render rule results
 ** TODO come up with demo scenarios
 to illustrate all the points of the problem statement
