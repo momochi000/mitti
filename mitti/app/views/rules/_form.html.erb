@@ -34,7 +34,7 @@
   <div>
     <%= form.label :example_observation, style: "display: block" %>
     <%= form.textarea :example_observation %>
-    <%= form.submit "Test rule", formaction: rule_test_path(rule), data: { turbo_frame: "test_rule" } %>
+    <%= form.submit "Test rule", formaction: test_rule_path, data: { turbo_frame: "test_rule" } %>
     <%= turbo_frame_tag 'test_rule' do %>
     <% end %>
   </div>

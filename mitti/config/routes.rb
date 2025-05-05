@@ -20,14 +20,13 @@ Rails.application.routes.draw do
   get 'admin/dashboard' => 'admin#dashboard', as: :admin_dashboard
   get 'applied_scientist/dashboard' => 'applied_scientist#dashboard', as: :applied_science_dashboard
   get 'underwriter/dashboard' => 'underwriter#dashboard', as: :underwriter_dashboard
+  put 'test_rule' => 'rules#test'
+  patch 'test_rule' => 'rules#test'
+  post 'test_rule' => 'rules#test'
 
   resources :observations do
     post :run
   end
   resources :properties
-  resources :rules do
-    get :test
-    post :test
-    patch :test
-  end
+  resources :rules
 end
