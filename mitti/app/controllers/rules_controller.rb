@@ -67,6 +67,9 @@ class RulesController < ApplicationController
       content: JSON.parse(params[:rule][:example_observation])
     )
     @results = RuleApplication.apply_rule(@rule, @observation)
+  rescue JSON::ParserError => e
+    logger.error("Error parsing json --> #{e}")
+    render :edit, status: :unprocessable_entity, alert: 'Error parsing json'
   end
 
   private

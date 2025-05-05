@@ -1,0 +1,35 @@
+<li>
+  <%- if can?(:read, result[:rule]) && result[:rule]&.id.present?%>
+    <%= link_to(result[:rule].name, rule_path(result[:rule]), data: { turbo: false}) %>
+  <% else %>
+    <%= result[:rule].name %>
+  <% end %>
+  <% if result[:is_vulnerable] %>
+    <div>
+      Bridge Mitigations:
+      <% if result[:mitigations][:bridge_mitigations].is_a? Array %>
+        <ul>
+        <% result[:mitigations][:bridge_mitigations].each do |bm| %>
+          <li> <%= bm %> </li>
+        <% end %>
+        </ul>
+      <% else %>
+        <%= result[:mitigations][:bridge_mitigations] %>
+      <% end %>
+    </div>
+    <div>
+      Full Mitigations:
+      <% if result[:mitigations][:full_mitigations].is_a? Array %>
+        <ul>
+        <% result[:mitigations][:full_mitigations].each do |bm| %>
+          <li> <%= bm %> </li>
+        <% end %>
+        </ul>
+      <% else %>
+        <%= result[:mitigations][:full_mitigations] %>
+      <% end %>
+    </div>
+  <% else %>
+    <span> No vulnerability found </span>
+  <% end %>
+</li>

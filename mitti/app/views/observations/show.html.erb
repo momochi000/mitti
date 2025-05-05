@@ -10,28 +10,12 @@
     <%= button_to "Evaluate this observation against rules at the time of observation", observation_run_path(@observation, historical: true), method: :post %>
     <%= button_to "Evaluate this observation against current rules", observation_run_path(@observation), method: :post %>
     <%- if @observation_results.present? %>
-      <div>
-      <%- @observation_results.each do |r| %>
+      <div class='rule_results_wrap'>
         <ul>
-          <li>
-            <%- if can? :read, r[:rule] %>
-              <%= link_to(r[:rule].name, rule_path(r[:rule]), data: { turbo: false}) %>
-            <% else %>
-              <%= r[:rule].name %>
-            <% end %>
-            <% if r[:is_vulnerable] %>
-              <div>
-                Bridge Mitigations: <%= r[:mitigations][:bridge_mitigations] %>
-              </div>
-              <div>
-                Full Mitigations: <%= r[:mitigations][:full_mitigations] %>
-              </div>
-            <% else %>
-              <span> No vulnerability found </span>
-            <% end %>
-          </li>
+          <%- @observation_results.each do |r| %>
+            <%= rule_results_helper(r) %>
+          <% end %>
         </ul>
-      <% end %>
       </div>
     <% end %>
   <% end %>

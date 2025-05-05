@@ -133,11 +133,14 @@ CLOSED: [2025-05-04 Sun 20:51]
 CLOSED: [2025-05-04 Sun 22:35]
 ** DONE list and link to observations from the property page.
 CLOSED: [2025-05-05 Mon 08:46]
+** DONE upload the code to github
+CLOSED: [2025-05-05 Mon 13:00]
 ** DONE show observations in a nicer format
 CLOSED: [2025-05-05 Mon 12:26]
-** TODO create a partial to render rule results
-** TODO show results in a nicer format
-** TODO upload the code to github
+** DONE create a partial to render rule results
+CLOSED: [2025-05-05 Mon 13:00]
+** DONE show results in a nicer format
+CLOSED: [2025-05-05 Mon 13:00]
 ** TODO add login form/controls to the homepage
 ** TODO come up with demo scenarios
 to illustrate all the points of the problem statement

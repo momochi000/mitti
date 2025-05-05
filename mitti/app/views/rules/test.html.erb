@@ -1,4 +1,7 @@
 <%= turbo_frame_tag 'test_rule' do %>
   <br />
-  <%= pretty_rule_result(@results) %>
+  <div class='rule_results_wrap'>
+    <strong> Rule test results: </strong>
+    <%= rule_results_helper(@results) %>
+  </div>
 <% end %>
