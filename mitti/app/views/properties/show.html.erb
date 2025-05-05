@@ -2,6 +2,16 @@
 
 <%= render @property %>
 
+<% if can? :view, Observation %>
+  <div>
+    <% @observations.each do |observation| %>
+      <%= link_to "Observation made at #{observation.observed_at}", observation_path(observation) %>
+    <% end %>
+  </div>
+  <br />
+  <br />
+<% end %>
+
 <div>
   <%= link_to "Edit this property", edit_property_path(@property) %> |
   <%= link_to "Back to properties", properties_path %>

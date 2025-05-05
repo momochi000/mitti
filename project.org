@@ -131,14 +131,16 @@ CLOSED: [2025-05-04 Sun 20:18]
 CLOSED: [2025-05-04 Sun 20:51]
 ** DONE update readme with all necessary content
 CLOSED: [2025-05-04 Sun 22:35]
-** TODO list and link to observations from the property page.
+** DONE list and link to observations from the property page.
+CLOSED: [2025-05-05 Mon 08:46]
+** TODO show observations in a nicer format
 ** TODO upload the code to github
+** TODO add login form/controls to the homepage
 ** TODO create a partial to render rule results
 ** TODO come up with demo scenarios
 to illustrate all the points of the problem statement
 ** TODO create some more example observations and add to seeds
 ** TODO create some more example rules and add to seeds
-** TODO add login form/controls to the homepage
 ** -- MILESTONE--
 everything below here i consider bonus
 ** TODO setup logger
