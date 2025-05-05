@@ -10,9 +10,13 @@ module RuleApplication
       {rule: rule, is_vulnerable: is_vulnerable}
     end
   end
-  
-  def apply_all_rules(observation)
+
+  def apply_all_rules(observation, historical: false)
     Parallel.map(Rule.all, in_threads: 8) do |curr_rule|
+      if historical
+        curr_rule = curr_rule.paper_trail.version_at(observation.observed_at)
+        next if curr_rule.blank?
+      end
       is_vulnerable = RuleApplication.detect_vulnerability(curr_rule, observation)
       if is_vulnerable
         mitigations = RuleApplication.determine_mitigations(curr_rule, observation)
@@ -20,7 +24,7 @@ module RuleApplication
       else
         {rule: curr_rule, is_vulnerable: is_vulnerable}
       end
-    end
+    end.compact
   end
 
   def detect_vulnerability(rule, observation)

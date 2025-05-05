@@ -7,7 +7,8 @@
   <%= link_to "Back to observations", observations_path %>
 
   <%= turbo_frame_tag 'observation_results' do %>
-    <%= button_to "Evaluate this observation against all rules", observation_run_path(@observation), method: :post %>
+    <%= button_to "Evaluate this observation against rules at the time of observation", observation_run_path(@observation, historical: true), method: :post %>
+    <%= button_to "Evaluate this observation against current rules", observation_run_path(@observation), method: :post %>
     <%- if @observation_results.present? %>
       <div>
       <%- pretty_observation_results(@observation_results).each do |r| %>
