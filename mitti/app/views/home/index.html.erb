@@ -1,3 +1,14 @@
 <h1>
-  HELLO HOMEPAGE !!
+  Welcome to Mitti, the property mitigation engine!
 </h1>
+
+
+<% if user_signed_in? %>
+  <p>Signed in as <%= current_user.email %></p>
+  <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
+<% else %>
+  <%- if controller_name != 'sessions' %>
+    <%= link_to "Log in", new_session_path(User.new) %><br />
+  <% end %>
+<% end %>
+

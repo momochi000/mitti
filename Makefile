@@ -1,4 +1,4 @@
-.PHONY: build run shell
+.PHONY: build up shell
 
 build:
 	docker compose build
