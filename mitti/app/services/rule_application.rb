@@ -2,7 +2,8 @@ module RuleApplication
   extend self
 
   def apply_rule(rule, observation)
-    is_vulnerable = RuleApplication.detect_vulnerability(rule, observation)
+    is_vulnerable = RuleApplication.detect_vulnerability_consensus(rule, observation)
+
     if is_vulnerable
       mitigations = RuleApplication.determine_mitigations(rule, observation)
       {rule: rule, mitigations: mitigations, is_vulnerable: is_vulnerable}
@@ -28,12 +29,28 @@ module RuleApplication
     ]
 
     response = llm.chat(
-      temperature: 0,
       messages: messages,
+      temperature: 0.0,
       tools: Tools::VulnerabilityTool.function_schemas.to_openai_format,
       tool_choice: {"function" => {"name" => "tools_vulnerability_tool__detect_vulnerability"}, "type" => "function"}
     )
     get_vulnerability_tool_call(response)
+  end
+
+  def detect_vulnerability_consensus(rule, observation)
+    messages = [
+      { role: 'system', content: detect_vulnerability_prompt },
+      { role: 'user', content: detect_vulnerability_instruction(rule, observation) }
+    ]
+
+    response = llm.chat(
+      messages: messages,
+      model: 'o3-mini',
+      n: 5,
+      tools: Tools::VulnerabilityTool.function_schemas.to_openai_format,
+      tool_choice: {"function" => {"name" => "tools_vulnerability_tool__detect_vulnerability"}, "type" => "function"}
+    )
+    get_vulnerability_tool_call_consensus(response)
   end
 
   def determine_mitigations(rule, observation)
@@ -43,8 +60,8 @@ module RuleApplication
     ]
 
     response = llm.chat(
-      temperature: 0,
       messages: messages,
+      temperature: 0.0,
       tools: Tools::MitigationsTool.function_schemas.to_openai_format,
       tool_choice: 'auto'
       #tool_choice: [
@@ -62,7 +79,7 @@ module RuleApplication
   end
 
   def detect_vulnerability_prompt
-    "You are a property assessor attempting to determine if the property in question, based on the observations json provided, is vulnerable to the given rule. Use the example mitigations to guide your judgement on ways the property can be modified or adjusted to reduce the risk of this vulnerability."
+    "You are a property assessor attempting to determine if the property in question, based on the observations json provided, is vulnerable to the given vulnerability rule. Use the example mitigations and your significant industry experience to guide your judgement."
   end
 
   def detect_vulnerability_instruction(rule, observation)
@@ -77,12 +94,12 @@ module RuleApplication
     #{rule_prompt(rule)}
     </PropertyVulnerabilityRule>
 
-    please determine if the property is vulnerable to the given rule.
+    Please determine if the property is vulnerable or at-risk to the given vulnerability rule.
     PROMPT
   end
 
   def determine_mitigations_prompt
-    "You are a property assessor attempting to determine if the property in question, based on the observations json provided, can be hardened or protected against the given vulnerability rule. Use any example mitigations given and/or your extensive knowledge and experience of property risk assessment to guide your judgement on ways the property can be modified or improved to reduce or remove the risk of this vulnerability. Try to determine as many both partial and full mitigations as possible if possible. It is also possible that no mitigations are possible."
+    "You are a property assessor attempting to determine if the property in question, based on the observations json provided, can be hardened or protected against the given vulnerability rule. Use any example mitigations given and your extensive knowledge and experience of property risk assessment to guide your judgement on ways the property can be modified or improved to reduce or remove the risk of this vulnerability. Try to determine as many both partial and full mitigations as possible if possible. It is also possible that no mitigations are possible."
   end
 
   def determine_mitigations_instruction(rule, observation)
@@ -123,6 +140,22 @@ module RuleApplication
     end
 
     JSON.parse(tool_calls.first['function']['arguments'])['is_vulnerable']
+  end
+
+  def get_vulnerability_tool_call_consensus(response)
+    tool_calls = response.raw_response['choices']
+
+    Rails.logger.debug(response.raw_response)
+    if tool_calls.blank?
+      Rails.logger.error("Tool call for vulnerability check returned nothing --> #{response.raw_response}")
+      return false
+    end
+
+    results = tool_calls
+      .map{|c| c['message']['tool_calls'][0]['function']['arguments']}
+      .map{|a| JSON.parse(a)['is_vulnerable']}
+
+    results.count(true) > results.count(false) ? true : false
   end
 
   def get_mitigation_tool_call(response)
