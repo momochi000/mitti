@@ -1,4 +1,5 @@
 <div id="<%= dom_id observation %>">
+  <%= link_to "Observation made at #{observation.observed_at}", observation %>
   <p>
     <strong>Content:</strong>
     <%= observation_content_helper(observation) %>
