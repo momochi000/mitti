@@ -401,15 +401,15 @@ def example_observation_jsons
       ],
       "Kitchen Hood Condition": "Functioning with fire suppression; cosmetic updates needed"
     },
-    {
-      "Property Location": "Urban",
-      "Attic Vent has Screens": "True",
-      "Roof Type": "Class A",
-      "Window Type": "Tempered Glass",
-      "Wildfire Risk Category": "A",
-      "Vegetation": [],
-      "Chimney Condition": "Soot accumulation detected; spark arrestor missing"
-    },
+#    {
+#      "Property Location": "Urban",
+#      "Attic Vent has Screens": "True",
+#      "Roof Type": "Class A",
+#      "Window Type": "Tempered Glass",
+#      "Wildfire Risk Category": "A",
+#      "Vegetation": [],
+#      "Chimney Condition": "Soot accumulation detected; spark arrestor missing"
+#    },
     {
       "Property Location": "Rural",
       "Attic Vent has Screens": "False",
