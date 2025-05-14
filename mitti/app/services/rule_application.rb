@@ -34,6 +34,7 @@ module RuleApplication
     ]
 
     response = llm.chat(
+      temperature: 0,
       messages: messages,
       tools: Tools::VulnerabilityTool.function_schemas.to_openai_format,
       tool_choice: {"function" => {"name" => "tools_vulnerability_tool__detect_vulnerability"}, "type" => "function"}
@@ -48,6 +49,7 @@ module RuleApplication
     ]
 
     response = llm.chat(
+      temperature: 0,
       messages: messages,
       tools: Tools::MitigationsTool.function_schemas.to_openai_format,
       tool_choice: 'auto'
