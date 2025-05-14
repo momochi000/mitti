@@ -11,10 +11,14 @@
     </div>
   <% end %>
 
+  <% if observation.property.present? %>
+  <div class='hidden'>
+  <% else %>
   <div>
-    <%= form.label :property_id, style: "display: block" %>
-    <%= form.select :property_id, properties_options %>
-  </div>
+  <% end %>
+      <%= form.label :property_id, style: "display: block" %>
+      <%= form.select :property_id, properties_options %>
+    </div>
   <div>
     <%= form.label :content, style: "display: block" %>
     <%= form.textarea :content %>

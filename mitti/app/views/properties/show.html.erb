@@ -3,13 +3,21 @@
 <%= render @property %>
 
 <% if can? :view, Observation %>
-  <div>
+  <div class="property_observation_wrap">
+    <% if @observations.any? %>
+      <ul>
+    <% end %>
     <% @observations.each do |observation| %>
-      <%= link_to "Observation made at #{observation.observed_at}", observation_path(observation) %>
+      <li> <%= link_to "Observation made at #{observation.observed_at}", observation_path(observation) %> </li>
+    <% end %>
+    <% if @observations.any? %>
+      </ul>
     <% end %>
   </div>
-  <br />
-  <br />
+<% end %>
+
+<%= turbo_frame_tag "property_new_observation_form" do %>
+  <%= link_to "Make an observation about this property", property_new_observation_path(@property) %>
 <% end %>
 
 <div>

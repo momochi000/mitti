@@ -25,12 +25,13 @@ class ObservationsController < ApplicationController
   def create
     @observation = Observation.new(observation_params)
 
-    p "DEBUG: observation valid?---> #{@observation.valid?}"
-    p "DEBUG: observation errors---> #{@observation.errors.full_messages}"
-
     respond_to do |format|
       if @observation.save
         format.html { redirect_to @observation, notice: "Observation was successfully created." }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace("property_new_observation_form", partial: "observations/observation", locals: { observation: @observation })
+        end
+
         format.json { render :show, status: :created, location: @observation }
       else
         format.html { render :new, status: :unprocessable_entity }

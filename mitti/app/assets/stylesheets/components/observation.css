@@ -6,3 +6,6 @@
 .observation_content_wrap span::after {
   content: ': ';
 }
+.hidden {
+  visibility: hidden;
+}

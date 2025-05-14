@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_property, only: %i[ show edit update destroy ]
+  before_action :set_property, only: %i[ show edit update destroy new_observation ]
   load_and_authorize_resource
 
   # GET /properties or /properties.json
@@ -60,10 +60,20 @@ class PropertiesController < ApplicationController
     end
   end
 
+  def new_observation
+    @observation = Observation.new(property: @property)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_property
-      @property = Property.find(params.expect(:id))
+      @property = if params[:id].present?
+        Property.find(params.expect(:id))
+      elsif params[:property_id].present?
+        Property.find(params.expect(:property_id))
+      else
+        raise "Attempted to load page without an id for a property"
+      end
     end
 
     # Only allow a list of trusted parameters through.

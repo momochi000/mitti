@@ -141,6 +141,13 @@ CLOSED: [2025-05-05 Mon 12:26]
 CLOSED: [2025-05-05 Mon 13:00]
 ** DONE show results in a nicer format
 CLOSED: [2025-05-05 Mon 13:00]
+** DONE restart and reseed data
+CLOSED: [2025-05-08 Thu 14:35]
+i did a docker system prune
+** TODO Add a way to create an observation from the property page
+I want a button here that says "make an observation"
+this then opens a form to create one
+** TODO if there's time consider adding simpleform and styling
 ** TODO add login form/controls to the homepage
 ** TODO come up with demo scenarios
 to illustrate all the points of the problem statement

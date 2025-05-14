@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   resources :observations do
     post :run
   end
-  resources :properties
+  resources :properties do
+    get :new_observation
+  end
   resources :rules
 end
