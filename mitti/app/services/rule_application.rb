@@ -46,7 +46,7 @@ module RuleApplication
     response = llm.chat(
       messages: messages,
       model: 'o3-mini',
-      n: 5,
+      n: 3,
       tools: Tools::VulnerabilityTool.function_schemas.to_openai_format,
       tool_choice: {"function" => {"name" => "tools_vulnerability_tool__detect_vulnerability"}, "type" => "function"}
     )
