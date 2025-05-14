@@ -144,7 +144,8 @@ CLOSED: [2025-05-05 Mon 13:00]
 ** DONE restart and reseed data
 CLOSED: [2025-05-08 Thu 14:35]
 i did a docker system prune
-** TODO Add a way to create an observation from the property page
+** DONE Add a way to create an observation from the property page
+CLOSED: [2025-05-13 Tue 21:16]
 I want a button here that says "make an observation"
 this then opens a form to create one
 ** TODO if there's time consider adding simpleform and styling

@@ -64,14 +64,8 @@ class ObservationsController < ApplicationController
   end
 
   def run
-    if params[:historical]
-      @observation = Observation.find(params.expect(:observation_id))
-      @observation_results = RuleApplication.apply_all_rules(@observation, historical: true)
-    else
-      @observation = Observation.find(params.expect(:observation_id))
-      @observation_results = RuleApplication.apply_all_rules(@observation)
-      #@observation_results = [{rule: 'blah', is_vulnerable: 'false'}]
-    end
+    @observation = Observation.find(params.expect(:observation_id))
+    @observation_results = RuleApplication.apply_all_rules(@observation, historical: !!params[:historical])
     render :show
   end
 
