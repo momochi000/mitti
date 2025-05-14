@@ -5,7 +5,7 @@ module RuleApplication
     is_vulnerable = RuleApplication.detect_vulnerability(rule, observation)
     if is_vulnerable
       mitigations = RuleApplication.determine_mitigations(rule, observation)
-      {rule: rule, mitigations: mitigations}
+      {rule: rule, mitigations: mitigations, is_vulnerable: is_vulnerable}
     else
       {rule: rule, is_vulnerable: is_vulnerable}
     end
@@ -17,13 +17,7 @@ module RuleApplication
         curr_rule = curr_rule.paper_trail.version_at(observation.observed_at)
         next if curr_rule.blank?
       end
-      is_vulnerable = RuleApplication.detect_vulnerability(curr_rule, observation)
-      if is_vulnerable
-        mitigations = RuleApplication.determine_mitigations(curr_rule, observation)
-        {rule: curr_rule, mitigations: mitigations, is_vulnerable: is_vulnerable}
-      else
-        {rule: curr_rule, is_vulnerable: is_vulnerable}
-      end
+      apply_rule(curr_rule, observation)
     end.compact
   end
 
